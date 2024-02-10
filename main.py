@@ -10,7 +10,7 @@ pygame.display.set_icon(icon)
 # Constants
 ROWS = 10
 COLS = 10
-MINE_COUNT = 15
+MINE_COUNT = 10
 CELL_SIZE = 40
 BORDER_SIZE = 50
 
@@ -90,13 +90,15 @@ def draw_board():
     draw_remaining_flags()  # Draw remaining flags count
 
     if game_over:
-        game_over_text = font.render("Game Over!", True, BLACK)
+        lose_font= pygame.font.SysFont(None, 50)
+        game_over_text = lose_font.render("YOU EXPLODED!", True, RED)
         text_rect = game_over_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
         screen.blit(game_over_text, text_rect)
         draw_play_again_button()
 
     if game_won:
-        game_won_text = font.render("You Win!", True, BLACK)
+        win_font= pygame.font.SysFont(None, 50)
+        game_won_text = win_font.render("You Win!", True, 124,252,0)
         text_rect = game_won_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
         screen.blit(game_won_text, text_rect)
         draw_play_again_button()
@@ -105,8 +107,8 @@ def draw_board():
 def draw_play_again_button():
     # Draw the "Play Again" button
     play_again_rect = pygame.Rect(0, HEIGHT - CELL_SIZE, WIDTH, CELL_SIZE)
-    pygame.draw.rect(screen, GRAY, play_again_rect)
-    play_again_text = font.render("Play Again", True, BLACK)
+    pygame.draw.rect(screen, WHITE, play_again_rect)
+    play_again_text = font.render("--> Play Again <--", True, BLACK)
     text_rect = play_again_text.get_rect(center=play_again_rect.center)
     screen.blit(play_again_text, text_rect)
 
