@@ -1,10 +1,7 @@
 import pygame
 import random
-import os
 
-sourceFileDir = os.path.dirname(os.path.abspath(__file__))
-iconPath = os.path.join(sourceFileDir, 'icon.ico')
-icon = pygame.image.load(iconPath)
+icon = pygame.image.load('icon.ico')
 pygame.display.set_icon(icon)
 
 # Constants
@@ -92,14 +89,14 @@ def draw_board():
     if game_over:
         lose_font= pygame.font.SysFont(None, 50)
         game_over_text = lose_font.render("YOU EXPLODED!", True, RED)
-        text_rect = game_over_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+        text_rect = game_over_text.get_rect(center=(WIDTH // 2, HEIGHT // 12))
         screen.blit(game_over_text, text_rect)
         draw_play_again_button()
 
     if game_won:
         win_font= pygame.font.SysFont(None, 50)
-        game_won_text = win_font.render("You Win!", True, 124,252,0)
-        text_rect = game_won_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+        game_won_text = win_font.render("CONGRATS, You Win!", True, RED)
+        text_rect = game_won_text.get_rect(center=(WIDTH // 2, HEIGHT // 12))
         screen.blit(game_won_text, text_rect)
         draw_play_again_button()
 
